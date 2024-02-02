@@ -1,0 +1,120 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="flex flex-col">
+    <div class="flex-wrap -m-4 container mx-auto px-9 py-10 flex flex-col">
+      <section class="text-gray-950 bg-white body-font">            
+          <div class="flex item-center justify-center">
+            <div class="bg-emerald-300 w-full p-4 rounded-lg ">
+            <h1 class="px-6 uppercase "><b>Pet Details</b></h1>
+              <div class=" relative overflow-x-auto">
+                <table class="w-full text-sm text-left rtl:text-right text-black ">
+                    <thead class="bg-emerald-300 text-xs text-black uppercase ">
+                        <tr class="text-lg">
+                            <th scope="col" class="px-6 py-3">
+                                Pet Photo
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Title
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Note from owner
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                User
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Pet
+                          </th>
+                        </tr>
+                    </thead>
+                    <tbody>                    
+                          <tr class="bg-emerald-300 border-b ">
+                            <td class="px-6 py-4">
+                              <img src="{{post.image.url}}" class="object object-center h-32 w-64"></img>
+                            </td>
+                            <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap">
+                            {{ post.title}}</a>
+                            </th>
+                            <td class="px-6 py-4">
+                              {{ post.description}}
+                            </td>
+                            <td class="px-6 py-4">
+                              {{ post.user }}
+                            </td>
+                            <td class="px-6 py-4">
+                              {{ post.pet }}
+                            </td>
+                            <td>
+                              <a a href="{% url 'post_update' post.pk %}"><button class="inline-flex text-white bg-blue-700 border-0 py-2 px-6 focus:outline-none hover:bg-blue-950 hover:text-white rounded text-lg">Update</button></a>
+                            </td>  
+                            <td>
+                              <a href="{% url 'post_delete' post.pk %}"><button class="inline-flex text-white bg-red-700 border-0 py-2 px-6 focus:outline-none hover:bg-red-950 hover:text-white rounded text-lg">Delete</button></a>
+                            </td> 
+                            <td>                     
+                          </tr>                   
+                    </tbody>
+                </table>
+              </div>
+              <div>
+                <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+
+              <p class="mt-10 px-6 uppercase "><b>Found Pet</b></p>
+                <div class=" mt-10 relative overflow-x-auto">
+                  <table class="w-full text-sm text-left rtl:text-right text-black ">
+                      <thead class="bg-emerald-300 text-xs text-black uppercase ">
+                          <tr class="text-lg ">
+                              <th scope="col" class="px-6 py-3">
+                                  Pet Photo
+                              </th>
+                              <th scope="col" class="px-6 py-3">
+                                  Note from Finder
+                              </th>
+                              <th scope="col" class="px-6 py-3">
+                                  Found Location
+                              </th>
+                              <th scope="col" class="px-6 py-3">
+                                  Title
+                              </th>
+                          </tr>
+                      </thead>
+                      <tbody> 
+                      {% for report in reports %}                   
+                            <tr class="bg-emerald-300 border-b ">
+                              <td class="px-6 py-4">
+                                <img src="{{report.image.url}}" class="object object-center h-32 w-64"></img>
+                              </td>                        
+                              <td class="px-6 py-4">
+                                {{ report.description}}
+                              </td>
+                              <td class="px-6 py-4">
+                                {{ report.location }}
+                              </td>
+                              <td class="px-6 py-4">
+                                {{ report.post }}
+                              </td>
+                              <td class="px-6 py-4">
+                                {{ report.title}}
+                              </td>  
+                              <td>
+                                <a href={% url 'found_update' report.pk %}><button class="inline-flex text-white bg-blue-700 border-0 py-2 px-6 focus:outline-none hover:bg-blue-950 hover:text-white rounded text-lg">Update</button></a>
+                              </td>  
+                              <td>
+                                <a href={% url 'found_delete' report.pk %}><button class="inline-flex text-white bg-red-700 border-0 py-2 px-5 focus:outline-none hover:bg-red-950 hover:text-white rounded text-lg">Delete</button></a>
+                              </td> 
+                              <td>                     
+                            </tr>
+                        {% endfor %}                   
+                      </tbody>
+                  </table>
+                </div>
+                <div>
+               
+              </div>                
+            </div>           
+          </div>
+      </section>   
+    </div>     
+
+{% endblock content %}

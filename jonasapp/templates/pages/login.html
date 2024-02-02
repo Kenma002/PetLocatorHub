@@ -1,0 +1,27 @@
+{% extends '../pages/base.html'%} {% block title %} login {% endblock title %}
+{% block content %}
+<div class="w-full bg-white h-screen flex flex-col justify-center items-center">
+  <form action="/login_store"
+    action=""
+    method="post"
+    class="w-96 h-auto rounded-lg shadow-1g p-2  flex flex-col gap-2"
+  >
+  {% csrf_token %}
+    <div class="w-98 p-8 shadow-lg bg-emerald-950 rounded-md">
+    <h1 class="text-white text-lg font-bold text-center"><i class="fa-solid fa-user"></i> Login Form</h1>
+    <hr class="mt-3">
+    <br>
+    <div class="text-slate-400 flex flex-col gap-2">
+      <label for=""><i class="fa-regular fa-user"></i> Username</label>
+      <input type="text" placeholder="Email" name="username" class="bg-white text-black input input-bordered input-info w-full max-w-xs" />
+    </div>
+    <div class="text-slate-400 flex flex mt-2 flex-col gap-2">
+      <label for=""><i class="fa-solid fa-lock"></i> Password</label>
+      <input type="Password" placeholder="Password" name="password" class="bg-white text-black input input-bordered input-info w-full max-w-xs" />
+    <br>
+    <button class="text-lg font-bold inline-flex text-gray-300 bg-orange-500 border-0 py-2 px-6 justify-center focus:outline-none hover:bg-orange-400 rounded input-info w-full max-w-xs">Log in</button>
+  </div>
+  </form>
+</div>
+
+{% endblock %}

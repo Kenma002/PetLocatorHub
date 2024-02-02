@@ -1,0 +1,65 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <main class="flex flex-col ">
+      <div class="bg-gray-100 flex-wrap container mx-auto px-9 py-10 flex flex-col">
+        <section class="text-black bg-white body-font">            
+            <div class="flex item-center justify-center">
+              <div class="bg-emerald-300 w-full p-4 rounded-lg ">
+              <h1 class="text-lg flex item-center justify-center "><b>Reported Lost Pet</b></h1> <br>
+              <hr> <hr> <hr> <hr> <hr>
+              
+                <div class="relative overflow-x-auto">
+                  <table class="w-full text-sm text-left rtl:text-right text-black ">
+                      <thead class="text-xs text-black uppercase ">
+                          <tr class="text-lg">
+                              <th scope="col" class="px-6 py-3">
+                                  Pet Photo
+                              </th>
+                              <th scope="col" class="px-6 py-3">
+                                  Title
+                              </th>
+                              <th scope="col" class="px-6 py-3">
+                                  Note from owner
+                              </th>
+                              <th scope="col" class="px-6 py-3">
+                                  Pet
+                              </th>
+                              <th scope="col" class="px-6 py-3">
+                                  User
+                            </th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        {% for post in posts %}
+                          <tr class="bg-emerald-300 border-b ">
+                              <td class="hover:bg-emerald-600 px-6 py-4">
+                                <a href="{% url 'post_detail' pk=post.pk %}">
+                                <img src="{{post.image.url}}" class="object object-center h-32 w-64"></img></a>
+                              </td>
+                              <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap">
+                                {{ post.title}}
+                              </th>
+                              <td class="px-6 py-4">
+                                {{ post.description}}
+                              </td>
+                              <td class="px-6 py-4">
+                                {{ post.pet }}
+                              </td>
+                              <td class="px-6 py-4">
+                                {{ post.user }}
+                              </td>                       
+                          </tr>
+                        {% endfor %} 
+                      </tbody>
+                  </table>
+                </div>                
+              </div>           
+            </div>
+        </section>   
+      </div>     
+
+
+{% endblock content %}

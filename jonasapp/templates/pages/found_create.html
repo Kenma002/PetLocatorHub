@@ -1,0 +1,30 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<main class="flex flex-col ">
+    <section class="text-gray-950 bg-gray-100 body-font">
+        <div class="flex-wrap -m-4 container mx-auto px-5 py-10 flex flex-col">           
+            <div class="flex item-center justify-center">
+                <div class="bg-white w-1/3 p-4 rounded-lg ">
+                    <h1 class="flex item-center justify-center">
+                        <b>Create Post</b>
+                    </h1>
+                    
+                    <form action="{% url 'found' %}" method="post" enctype="multipart/form-data" class="flex flex-col gap-y-2">
+                        
+                        {% csrf_token %}
+                        
+                        {{ form }}
+                        
+                
+                        <button type="submit" class="flex item-center justify-center mt-6 bg-teal-500 hover:bg-teal-700 w-64
+                        text-center text-white font-semibold border-0 py-2 px-6 focus:outline-none
+                        rounded">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
